@@ -1,5 +1,7 @@
 package ma.youcode.aftas.Models.Entities;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -17,4 +19,12 @@ public class Hunting {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private Integer numberOfFish;
+
+    @ManyToOne
+    @JoinColumn(name = "member_id")
+    private Member member;
+
+    @ManyToOne
+    @JoinColumn(name = "competition_id")
+    private Competition competition;
 }
