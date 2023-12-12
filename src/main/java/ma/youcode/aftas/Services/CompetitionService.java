@@ -8,8 +8,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.text.SimpleDateFormat;
+import java.util.Collection;
 import java.util.Date;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class CompetitionService {
@@ -21,27 +23,34 @@ public class CompetitionService {
         this.modelMapper = modelMapper;
     }
 
-    public List<Competition> getAllCompetitions() {
-        return competitionRepository.findAll();
+    public List<CompetitionRequestDto> getAllCompetitions() {
+        List<Competition> competitions = competitionRepository.findAll();
+        return competitions.stream()
+                .map(this::convertToDto)
+                .collect(Collectors.toList());
     }
 
+    private CompetitionRequestDto convertToDto(Competition competition) {
+        return modelMapper.map(competition, CompetitionRequestDto.class);
+    }
     public Competition getCompetitionById(Long id) {
         return competitionRepository.findById(id).orElse(null);
     }
 
-    public Competition createCompetition(CompetitionRequestDto competitionDto) {
+    public CompetitionRequestDto createCompetition(CompetitionRequestDto competitionDto) {
         String location = competitionDto.getLocation();
         String code = generateCompetitionCode(location);
         Competition competition = modelMapper.map(competitionDto, Competition.class);
         competition.setCode(code);
-        return competitionRepository.save(competition);
+        Competition savedCompetition = competitionRepository.save(competition);
+        return modelMapper.map(savedCompetition, CompetitionRequestDto.class);
     }
-    public Competition updateCompetition(CompetitionRequestDto competitionDto) {
-        String location = competitionDto.getLocation();
-        String code = generateCompetitionCode(location);
+    public CompetitionRequestDto updateCompetition(CompetitionRequestDto competitionDto) {
+        String code = generateCompetitionCode(competitionDto.getLocation());
         Competition competition = modelMapper.map(competitionDto, Competition.class);
         competition.setCode(code);
-        return competitionRepository.save(competition);
+        Competition savedCompetition = competitionRepository.save(competition);
+        return modelMapper.map(savedCompetition, CompetitionRequestDto.class);
     }
     public void deleteById(Long id) {
         competitionRepository.deleteById(id);
@@ -49,10 +58,8 @@ public class CompetitionService {
 
     private String generateCompetitionCode(String location) {
         String locationCode = location.substring(0, Math.min(location.length(), 3));
-
         SimpleDateFormat dateFormat = new SimpleDateFormat("yy-MM-dd");
         String formattedDate = dateFormat.format(new Date());
-
         return locationCode.toLowerCase() + "-" + formattedDate;
     }
 }

@@ -1,5 +1,8 @@
 package ma.youcode.aftas.Models.Entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -21,6 +24,7 @@ public class Competition {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    @JsonProperty(access = JsonProperty.Access.READ_ONLY)
     private String code;
     private Date date;
     private Time startTime;
@@ -31,4 +35,7 @@ public class Competition {
 
     @OneToMany(mappedBy = "competition", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private List<Ranking> rankings = new ArrayList<Ranking>();
+
+    @OneToMany(mappedBy = "competition", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    private List<Hunting> huntings = new ArrayList<Hunting>();
 }

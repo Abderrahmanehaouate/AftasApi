@@ -21,7 +21,7 @@ public class CompetitionController {
         this.competitionService = competitionService;
     }
     @GetMapping
-    public List<Competition> getAllCompetitions() {
+    public List<CompetitionRequestDto> getAllCompetitions() {
         return competitionService.getAllCompetitions();
     }
     @GetMapping("/{id}")
@@ -29,11 +29,11 @@ public class CompetitionController {
         return competitionService.getCompetitionById(id);
     }
     @PostMapping("/create")
-    public Competition createCompetition(@RequestBody CompetitionRequestDto competitionDto){
+    public CompetitionRequestDto createCompetition(@RequestBody CompetitionRequestDto competitionDto){
         return competitionService.createCompetition(competitionDto);
     }
     @PutMapping("/update")
-    public Competition updateCompetition(@RequestBody CompetitionRequestDto competitionDto){
+    public CompetitionRequestDto updateCompetition(@RequestBody CompetitionRequestDto competitionDto){
         return competitionService.updateCompetition(competitionDto);
     }
 

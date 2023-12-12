@@ -1,5 +1,7 @@
 package ma.youcode.aftas.Models.Entities;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
 import ma.youcode.aftas.Models.Enums.IdentityDocumentType;
@@ -30,7 +32,10 @@ public class Member {
     private IdentityDocumentType identityDocumentType;
     private String identityNumber;
 
-    @OneToMany(mappedBy = "member", cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(mappedBy = "member", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @JsonManagedReference
     private List<Ranking> rankings = new ArrayList<Ranking>();
 
+    @OneToMany(mappedBy = "member", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    private List<Hunting> huntings = new ArrayList<Hunting>();
 }
