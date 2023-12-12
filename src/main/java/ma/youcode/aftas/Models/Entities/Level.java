@@ -6,6 +6,9 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Getter
 @Setter
 @NoArgsConstructor
@@ -19,4 +22,7 @@ public class Level {
     private Integer code;
     private String description;
     private Integer points;
+
+    @OneToMany(mappedBy = "level", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    private List<Fish> fishes = new ArrayList<Fish>();
 }

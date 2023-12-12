@@ -27,4 +27,8 @@ public class Hunting {
     @ManyToOne
     @JoinColumn(name = "competition_id")
     private Competition competition;
+
+    @ManyToOne
+    @JoinColumn(name = "fish_id")
+    private Fish fish;
 }
