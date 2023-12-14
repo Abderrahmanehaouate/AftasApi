@@ -46,8 +46,6 @@ public class HuntingService {
         Long competitionId = huntingDto.getCompetition().getId();
 
         if(rankingRepository.existsByMemberIdAndCompetitionId(memberId, competitionId)) {
-            //STEP 1: Get the competition object from repository
-            //STEP 2: Get the competition start date and end date
 //            Ranking ranking = rankingRepository.findByMemberIdAndCompetitionId(memberId, competitionId);
 //            if(ranking.getCompetition().getStartDate().after(huntingDto.getHuntingDate())) {
 //                throw new IllegalStateException("The competition has not started yet.");

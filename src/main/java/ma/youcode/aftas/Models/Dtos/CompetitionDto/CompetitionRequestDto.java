@@ -18,7 +18,6 @@ import java.util.List;
 public class CompetitionRequestDto {
     private Long id;
     private Date date;
-    private String code;
     private Time startTime;
     private Time endTime;
     private Integer numberOfParticipants;

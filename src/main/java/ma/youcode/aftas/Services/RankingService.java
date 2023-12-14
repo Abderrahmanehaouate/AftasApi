@@ -61,20 +61,7 @@ public class RankingService {
 
     public RankingRequestDto createRanking(RankingRequestDto rankingDto) {
         Long competitionId = rankingDto.getCompetitionId();
-        Long memberId = rankingDto.getMemberId();
 
-        checkCompitionDate(competitionId);
-
-        if(rankingRepository.existsByMemberIdAndCompetitionId(memberId, competitionId)) {
-            throw new IllegalStateException("The member is already registered in the competition.");
-        }
-        Ranking ranking = modelMapper.map(rankingDto, Ranking.class);
-        Ranking savedRanking = rankingRepository.save(ranking);
-
-        return modelMapper.map(savedRanking, RankingRequestDto.class);
-    }
-
-    private void checkCompitionDate(Long competitionId) {
         Competition competition = competitionService.getCompetitionById(competitionId);
 
         LocalDateTime competitionStartDateTime = LocalDateTime.ofInstant(Instant.ofEpochMilli(competition.getDate().getTime()), ZoneId.systemDefault()).with(competition.getStartTime().toLocalTime());
@@ -86,7 +73,13 @@ public class RankingService {
         if (differenceInHours < 24) {
             throw new IllegalStateException("You can't share in a competition that is less than 24 hours before starting");
         }
+
+        Ranking ranking = modelMapper.map(rankingDto, Ranking.class);
+        Ranking savedRanking = rankingRepository.save(ranking);
+
+        return modelMapper.map(savedRanking, RankingRequestDto.class);
     }
+
     public RankingRequestDto updateRanking(RankingRequestDto rankingDto) {
 
         Ranking ranking = modelMapper.map(rankingDto, Ranking.class);
