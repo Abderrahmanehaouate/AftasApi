@@ -21,19 +21,19 @@ public class FishController {
         this.fishService = fishService;
     }
     @GetMapping
-    public List<Fish> getAllFishes() {
+    public List<FishRequestDto> getAllFishes() {
         return fishService.getAllFishes();
     }
     @GetMapping("/{id}")
-    public Fish getFishById(@PathVariable Long id) {
+    public FishRequestDto getFishById(@PathVariable Long id) {
         return fishService.getFishById(id);
     }
     @PostMapping("/create")
-    public Fish createFish(@RequestBody FishRequestDto fishDto) {
+    public FishRequestDto createFish(@RequestBody FishRequestDto fishDto) {
         return fishService.createFish(fishDto);
     }
     @PutMapping("/update")
-    public Fish updateFish(@RequestBody FishRequestDto fishDto){
+    public FishRequestDto updateFish(@RequestBody FishRequestDto fishDto){
         return fishService.updateFish(fishDto);
     }
     @DeleteMapping("/{id}")

@@ -4,9 +4,7 @@ import ma.youcode.aftas.Models.Dtos.LevelDto.LevelRequestDto;
 import ma.youcode.aftas.Services.LevelService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -21,5 +19,26 @@ public class LevelController {
     }
 
     @GetMapping
-    public List<LevelRequestDto> getAllLevels() {}
+    public List<LevelRequestDto> getAllLevels() {
+        return levelService.getAllLevels();
+    }
+    @GetMapping("/{id}")
+    public LevelRequestDto getLevelById(@PathVariable Long id) {
+        return levelService.getLevelById(id);
+    }
+
+    @PostMapping("/create")
+    public LevelRequestDto createLevel(@RequestBody LevelRequestDto levelDto) {
+        return levelService.createLevel(levelDto);
+    }
+
+    @PutMapping("/update")
+    public LevelRequestDto updateLevel(@RequestBody LevelRequestDto levelDto){
+        return levelService.updateLevel(levelDto);
+    }
+
+    @DeleteMapping("/{id}")
+    public void deleteLevelById(@PathVariable Long id){
+        levelService.deleteById(id);
+    }
 }

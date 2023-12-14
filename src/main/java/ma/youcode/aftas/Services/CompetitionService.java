@@ -3,13 +3,17 @@ package ma.youcode.aftas.Services;
 import ma.youcode.aftas.Models.Dtos.CompetitionDto.CompetitionRequestDto;
 import ma.youcode.aftas.Models.Entities.Competition;
 import ma.youcode.aftas.Repositories.CompetitionRepository;
+import org.apache.catalina.connector.Response;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.*;
 import org.springframework.stereotype.Service;
+import org.springframework.web.server.ResponseStatusException;
 
 import java.text.SimpleDateFormat;
 import java.util.Collection;
 import java.util.Date;
+import java.util.IllegalFormatCodePointException;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -42,6 +46,15 @@ public class CompetitionService {
         String code = generateCompetitionCode(location);
         Competition competition = modelMapper.map(competitionDto, Competition.class);
         competition.setCode(code);
+
+        if (competitionRepository.existsByCode(competition.getCode())) {
+            throw new IllegalArgumentException("Competition with code '" + competition.getCode() + "' already exists.");
+        }
+
+        if (competitionRepository.existsByDate(competitionDto.getDate())) {
+            throw new IllegalArgumentException("Already exists a competition in the same date");
+        }
+
         Competition savedCompetition = competitionRepository.save(competition);
         return modelMapper.map(savedCompetition, CompetitionRequestDto.class);
     }

@@ -5,6 +5,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import ma.youcode.aftas.Models.Dtos.CompetitionDto.CompetitionResponseDto;
+import ma.youcode.aftas.Models.Dtos.FishDto.FishResponseDto;
 import ma.youcode.aftas.Models.Dtos.MemberDto.MemberResponseDto;
 
 @Getter
@@ -14,7 +15,8 @@ import ma.youcode.aftas.Models.Dtos.MemberDto.MemberResponseDto;
 public class HuntingRequestDto {
     private Long id;
     private Integer numberOfFish;
+
     private MemberResponseDto member;
     private CompetitionResponseDto competition;
-
+    private FishResponseDto fish;
 }
