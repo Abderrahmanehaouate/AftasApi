@@ -33,7 +33,7 @@ public class MemberController {
         return memberService.createMember(memberDto);
     }
 
-    @PostMapping("/update")
+    @PutMapping ("/update")
     public MemberRequestDto updateMember(@RequestBody MemberRequestDto memberDto){
         return memberService.updateMember(memberDto);
     }

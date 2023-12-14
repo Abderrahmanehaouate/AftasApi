@@ -9,10 +9,10 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>ma.youcode</groupId>
-    <artifactId>Aftas</artifactId>
+    <artifactId>AftasApi</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>Aftas</name>
-    <description>Aftas</description>
+    <name>AftasApi</name>
+    <description>AftasApi</description>
     <properties>
         <java.version>17</java.version>
     </properties>
