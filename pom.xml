@@ -9,7 +9,7 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>ma.youcode</groupId>
-    <artifactId>Aftas</artifactId>
+    <artifactId>AftasApi</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>Aftas</name>
     <description>Aftas</description>
