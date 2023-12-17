@@ -5,6 +5,8 @@ import ma.youcode.aftas.Models.Entities.Member;
 import ma.youcode.aftas.Repositories.MemberRepository;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Slice;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -20,9 +22,10 @@ public class MemberService {
         this.modelMapper = modelMapper;
     }
 
-    public List<MemberRequestDto> getAllMembers() {
-        List<Member> members = memberRepository.findAll();
-        return members.stream()
+    public List<MemberRequestDto> getAllMembers(int page, int size) {
+        PageRequest pageRequest = PageRequest.of(page, size);
+        Slice<Member> members = memberRepository.findAll(pageRequest);
+        return members.getContent().stream()
                 .map(this::convertToDto)
                 .collect(Collectors.toList());
     }

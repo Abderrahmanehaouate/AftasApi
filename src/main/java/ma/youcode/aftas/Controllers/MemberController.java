@@ -20,8 +20,11 @@ public class MemberController {
     }
 
     @GetMapping
-    public List<MemberRequestDto> getAllMembers() {
-        return memberService.getAllMembers();
+    public List<MemberRequestDto> getAllMembers(
+            @RequestParam(defaultValue = "0") int page,
+            @RequestParam(defaultValue = "10") int size
+    ) {
+        return memberService.getAllMembers(page, size);
     }
 
     @GetMapping("/{id}")

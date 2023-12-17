@@ -6,6 +6,8 @@ import ma.youcode.aftas.Models.Entities.Competition;
 import ma.youcode.aftas.Repositories.CompetitionRepository;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Slice;
 import org.springframework.stereotype.Service;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -23,9 +25,11 @@ public class CompetitionService {
         this.modelMapper = modelMapper;
     }
 
-    public List<CompetitionRequestDto> getAllCompetitions() {
-        List<Competition> competitions = competitionRepository.findAll();
-        return competitions.stream()
+    public List<CompetitionRequestDto> getAllCompetitions(int page, int size) {
+        PageRequest pageRequest = PageRequest.of(page, size);
+
+        Slice<Competition> competitions = competitionRepository.findAll(pageRequest);
+        return competitions.getContent().stream()
                 .map(this::convertToDto)
                 .collect(Collectors.toList());
     }

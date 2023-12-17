@@ -22,8 +22,12 @@ public class CompetitionController {
         this.competitionService = competitionService;
     }
     @GetMapping
-    public List<CompetitionRequestDto> getAllCompetitions() {
-        return competitionService.getAllCompetitions();
+    public List<CompetitionRequestDto> getAllCompetitions(
+            @RequestParam(defaultValue = "0") int page,
+            @RequestParam(defaultValue = "10") int size
+    ) {
+
+        return competitionService.getAllCompetitions(page, size);
     }
     @GetMapping("/{id}")
     public CompetitionRequestDto getCompetitionById(@PathVariable Long id){
