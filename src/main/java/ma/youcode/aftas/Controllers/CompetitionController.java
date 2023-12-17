@@ -13,6 +13,7 @@ import java.util.List;
 
 @Controller
 @RestController
+@CrossOrigin("*")
 @RequestMapping("/api/v1/competitions")
 public class CompetitionController {
     private final CompetitionService competitionService;
@@ -25,7 +26,7 @@ public class CompetitionController {
         return competitionService.getAllCompetitions();
     }
     @GetMapping("/{id}")
-    public Competition getCompetitionById(@PathVariable Long id){
+    public CompetitionRequestDto getCompetitionById(@PathVariable Long id){
         return competitionService.getCompetitionById(id);
     }
     @PostMapping("/create")
@@ -38,9 +39,8 @@ public class CompetitionController {
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<String> deleteCompetitionById(@PathVariable Long id){
+    public void deleteCompetitionById(@PathVariable Long id){
         competitionService.deleteById(id);
-        return new ResponseEntity<>("Competition deleted successfully", HttpStatus.OK);
     }
 
 }

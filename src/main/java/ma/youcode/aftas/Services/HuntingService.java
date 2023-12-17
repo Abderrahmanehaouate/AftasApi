@@ -60,13 +60,16 @@ public class HuntingService {
 
         if(huntingRepository.existsByMemberIdAndCompetitionIdAndFishId(memberId, competitionId, fishId)) {
             Hunting existingHunting = huntingRepository.findByMemberIdAndCompetitionIdAndFishId(memberId, competitionId, fishId);
+
             int existingNumberOfFish = existingHunting.getNumberOfFish();
             int newNumberOfFish = huntingDto.getNumberOfFish();
             int totalNumberOfFish = existingNumberOfFish + newNumberOfFish;
+
             existingHunting.setNumberOfFish(totalNumberOfFish);
+
             Hunting savedHunting = huntingRepository.save(existingHunting);
 
-            int score = savedHunting.getNumberOfFish() * savedHunting.getFish().getLevel().getPoints();
+            int score = newNumberOfFish * savedHunting.getFish().getLevel().getPoints();
             updateRanking(memberId, competitionId, score);
 
             return modelMapper.map(savedHunting, HuntingRequestDto.class);

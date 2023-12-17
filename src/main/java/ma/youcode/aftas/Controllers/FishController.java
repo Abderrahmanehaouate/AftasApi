@@ -13,6 +13,7 @@ import java.util.List;
 
 @Controller
 @RestController
+@CrossOrigin("*")
 @RequestMapping("/api/v1/fishes")
 public class FishController {
     private final FishService fishService;

@@ -1,6 +1,8 @@
 package ma.youcode.aftas.Services;
 
+import ma.youcode.aftas.Models.Dtos.CompetitionDto.CompetitionRequestDto;
 import ma.youcode.aftas.Models.Dtos.RankingDto.RankingRequestDto;
+import ma.youcode.aftas.Models.Dtos.RankingDto.RankingResponseDto;
 import ma.youcode.aftas.Models.Entities.Competition;
 import ma.youcode.aftas.Models.Entities.Ranking;
 import ma.youcode.aftas.Repositories.RankingRepository;
@@ -59,7 +61,7 @@ public class RankingService {
         return modelMapper.map(ranking, RankingRequestDto.class);
     }
 
-    public RankingRequestDto createRanking(RankingRequestDto rankingDto) {
+    public RankingRequestDto createRanking(RankingResponseDto rankingDto) {
         Long competitionId = rankingDto.getCompetitionId();
         Long memberId = rankingDto.getMemberId();
 
@@ -77,13 +79,14 @@ public class RankingService {
 
     private void checkCompetitionDate(Long competitionId) {
 
-        Competition competition = competitionService.getCompetitionById(competitionId);
+        CompetitionRequestDto competition = competitionService.getCompetitionById(competitionId);
 
-        LocalDateTime competitionStartDateTime = LocalDateTime.ofInstant(Instant.ofEpochMilli(competition.getDate().getTime()), ZoneId.systemDefault()).with(competition.getStartTime().toLocalTime());
+        LocalDateTime competitionStartDateTime = LocalDateTime.ofInstant(Instant.ofEpochMilli(competition.getDate().getTime()), ZoneId.systemDefault()).with(competition.getStartTime());
 
         LocalDateTime currentDateTime = LocalDateTime.now();
 
         long differenceInHours = ChronoUnit.HOURS.between(currentDateTime, competitionStartDateTime);
+        System.out.println("differenceInHours: " + differenceInHours);
 
         if (differenceInHours < 24) {
             throw new IllegalStateException("You can't share in a competition that is less than 24 hours before starting");

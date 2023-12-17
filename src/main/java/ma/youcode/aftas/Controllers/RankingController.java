@@ -1,6 +1,7 @@
 package ma.youcode.aftas.Controllers;
 
 import ma.youcode.aftas.Models.Dtos.RankingDto.RankingRequestDto;
+import ma.youcode.aftas.Models.Dtos.RankingDto.RankingResponseDto;
 import ma.youcode.aftas.Services.RankingService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -10,6 +11,7 @@ import java.util.List;
 
 @Controller
 @RestController
+@CrossOrigin("*")
 @RequestMapping("/api/v1/rankings")
 public class RankingController {
     private final RankingService rankingService;
@@ -29,7 +31,7 @@ public class RankingController {
     }
 
     @PostMapping("/create")
-    public RankingRequestDto createRanking(@RequestBody RankingRequestDto rankingDto) {
+    public RankingRequestDto createRanking(@RequestBody RankingResponseDto rankingDto) {
         return rankingService.createRanking(rankingDto);
     }
 

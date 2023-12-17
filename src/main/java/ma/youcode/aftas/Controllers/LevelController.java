@@ -10,6 +10,7 @@ import java.util.List;
 
 @Controller
 @RestController
+@CrossOrigin("*")
 @RequestMapping("/api/v1/levels")
 public class LevelController {
     private final LevelService levelService;

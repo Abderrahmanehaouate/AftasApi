@@ -10,9 +10,10 @@ import ma.youcode.aftas.Models.Dtos.MemberDto.MemberResponseDto;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class RankingResponseDto {
+public class RankingDto {
     private Long competitionId;
     private Long memberId;
     private Integer rank;
     private Integer score;
+    private MemberResponseDto member;
 }

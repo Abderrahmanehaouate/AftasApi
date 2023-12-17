@@ -4,9 +4,11 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import ma.youcode.aftas.Models.Dtos.RankingDto.RankingDto;
 import ma.youcode.aftas.Models.Dtos.RankingDto.RankingResponseDto;
 
 import java.sql.Time;
+import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -19,10 +21,10 @@ public class CompetitionRequestDto {
     private Long id;
     private Date date;
     private String code;
-    private Time startTime;
-    private Time endTime;
+    private LocalTime startTime;
+    private LocalTime endTime;
     private Integer numberOfParticipants;
     private String location;
     private Double amount;
-    private List<RankingResponseDto> rankings = new ArrayList<RankingResponseDto>();
+    private List<RankingDto> rankings = new ArrayList<RankingDto>();
 }

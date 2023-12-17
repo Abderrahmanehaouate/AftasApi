@@ -10,6 +10,7 @@ import java.util.List;
 
 @Controller
 @RestController
+@CrossOrigin("*")
 @RequestMapping("/api/v1/members")
 public class MemberController {
     private final MemberService memberService;

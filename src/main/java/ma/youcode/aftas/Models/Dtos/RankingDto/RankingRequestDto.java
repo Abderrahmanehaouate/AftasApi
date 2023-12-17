@@ -4,6 +4,10 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import ma.youcode.aftas.Models.Dtos.CompetitionDto.CompetitionResponseDto;
+import ma.youcode.aftas.Models.Dtos.MemberDto.MemberRequestDto;
+import ma.youcode.aftas.Models.Dtos.MemberDto.MemberResponseDto;
+import ma.youcode.aftas.Models.Entities.Competition;
 
 @Getter
 @Setter
