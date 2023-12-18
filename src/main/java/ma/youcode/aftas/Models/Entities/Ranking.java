@@ -19,7 +19,6 @@ public class Ranking {
     private CompetitionMemberId id;
     @Min(value = 0, message = "Rank must be greater than 0")
     private Integer rank;
-    @Min(value = 0, message = "Score must be greater than 0")
     private Integer score;
 
     @ManyToOne

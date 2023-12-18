@@ -13,7 +13,7 @@ import ma.youcode.aftas.Models.Dtos.MemberDto.MemberResponseDto;
 public class RankingDto {
     private Long competitionId;
     private Long memberId;
-    private Integer rank;
-    private Integer score;
+    private Integer rank = 0;
+    private Integer score = 0;
     private MemberResponseDto member;
 }

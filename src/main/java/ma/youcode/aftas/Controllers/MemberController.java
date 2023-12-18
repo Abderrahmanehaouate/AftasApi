@@ -3,6 +3,7 @@ package ma.youcode.aftas.Controllers;
 import ma.youcode.aftas.Models.Dtos.MemberDto.MemberRequestDto;
 import ma.youcode.aftas.Services.MemberService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
@@ -27,6 +28,10 @@ public class MemberController {
         return memberService.getAllMembers(page, size);
     }
 
+    @GetMapping("/all")
+    public Integer getAllMembers() {
+        return memberService.CountAllMembers();
+    }
     @GetMapping("/{id}")
     public MemberRequestDto getMemberById(@PathVariable Long id) {
         return memberService.getMemberById(id);

@@ -53,4 +53,11 @@ public class MemberService {
     public void deleteById(Long id) {
         memberRepository.deleteById(id);
     }
+
+    public Integer CountAllMembers() {
+        // TODO : count all members in the database
+        List<Member> members = memberRepository.findAll();
+        Integer count = members.size();
+        return count;
+    }
 }

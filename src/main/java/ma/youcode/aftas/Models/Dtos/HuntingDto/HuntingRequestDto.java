@@ -15,6 +15,7 @@ import ma.youcode.aftas.Models.Dtos.MemberDto.MemberResponseDto;
 public class HuntingRequestDto {
     private Long id;
     private Integer numberOfFish;
+    private float averageWeight;
 
     private MemberResponseDto member;
     private CompetitionResponseDto competition;
