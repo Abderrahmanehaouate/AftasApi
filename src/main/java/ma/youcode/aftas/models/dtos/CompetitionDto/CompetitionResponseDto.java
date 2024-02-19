@@ -1,4 +1,4 @@
-package ma.youcode.aftas.models.Dtos.CompetitionDto;
+package ma.youcode.aftas.models.dtos.CompetitionDto;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

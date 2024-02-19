@@ -1,10 +1,10 @@
-package ma.youcode.aftas.models.Dtos.RankingDto;
+package ma.youcode.aftas.models.dtos.RankingDto;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import ma.youcode.aftas.models.Dtos.MemberDto.MemberResponseDto;
+import ma.youcode.aftas.models.dtos.MemberDto.MemberResponseDto;
 
 @Getter
 @Setter

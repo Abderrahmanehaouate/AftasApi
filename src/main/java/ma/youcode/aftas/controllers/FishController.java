@@ -1,6 +1,6 @@
 package ma.youcode.aftas.controllers;
 
-import ma.youcode.aftas.models.Dtos.FishDto.FishRequestDto;
+import ma.youcode.aftas.models.dtos.FishDto.FishRequestDto;
 import ma.youcode.aftas.services.FishService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;

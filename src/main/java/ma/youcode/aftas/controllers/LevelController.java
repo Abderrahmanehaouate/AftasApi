@@ -1,6 +1,6 @@
 package ma.youcode.aftas.controllers;
 
-import ma.youcode.aftas.models.Dtos.LevelDto.LevelRequestDto;
+import ma.youcode.aftas.models.dtos.LevelDto.LevelRequestDto;
 import ma.youcode.aftas.services.LevelService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;

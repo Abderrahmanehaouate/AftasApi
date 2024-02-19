@@ -1,4 +1,4 @@
-package ma.youcode.aftas.models.Dtos.LevelDto;
+package ma.youcode.aftas.models.dtos.HuntingDto;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -9,9 +9,7 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class LevelResponseDto {
+public class HuntingResponseDto {
     private Long id;
-    private Integer code;
-    private String description;
-    private Integer points;
+    private Integer numberOfFish;
 }

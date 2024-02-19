@@ -1,7 +1,7 @@
 package ma.youcode.aftas.Service;
 
 import ma.youcode.aftas.exception.ExceptionCompetition;
-import ma.youcode.aftas.models.Dtos.CompetitionDto.CompetitionRequestDto;
+import ma.youcode.aftas.models.dtos.CompetitionDto.CompetitionRequestDto;
 import ma.youcode.aftas.models.Entities.Competition;
 import ma.youcode.aftas.repositories.CompetitionRepository;
 import ma.youcode.aftas.services.CompetitionService;

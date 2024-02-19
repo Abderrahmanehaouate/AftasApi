@@ -1,6 +1,6 @@
 package ma.youcode.aftas.services;
 
-import ma.youcode.aftas.models.Dtos.MemberDto.MemberRequestDto;
+import ma.youcode.aftas.models.dtos.MemberDto.MemberRequestDto;
 import ma.youcode.aftas.models.Entities.Member;
 import ma.youcode.aftas.repositories.MemberRepository;
 import ma.youcode.aftas.services.servicesInterfaces.MemberServiceInterface;
@@ -19,7 +19,6 @@ public class MemberService implements MemberServiceInterface {
     private final MemberRepository memberRepository;
     private final ModelMapper modelMapper;
 
-    @Autowired
     public MemberService(MemberRepository memberRepository, ModelMapper modelMapper) {
         this.memberRepository = memberRepository;
         this.modelMapper = modelMapper;
@@ -65,7 +64,6 @@ public class MemberService implements MemberServiceInterface {
 
     @Override
     public Integer CountAllMembers() {
-        // TODO : count all members in the database
         List<Member> members = memberRepository.findAll();
         Integer count = members.size();
         return count;

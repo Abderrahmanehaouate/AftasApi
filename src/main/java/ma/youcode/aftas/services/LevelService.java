@@ -1,6 +1,6 @@
 package ma.youcode.aftas.services;
 
-import ma.youcode.aftas.models.Dtos.LevelDto.LevelRequestDto;
+import ma.youcode.aftas.models.dtos.LevelDto.LevelRequestDto;
 import ma.youcode.aftas.models.Entities.Level;
 import ma.youcode.aftas.repositories.LevelRepository;
 import org.modelmapper.ModelMapper;

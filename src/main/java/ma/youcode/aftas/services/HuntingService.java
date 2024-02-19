@@ -1,6 +1,6 @@
 package ma.youcode.aftas.services;
 
-import ma.youcode.aftas.models.Dtos.HuntingDto.HuntingRequestDto;
+import ma.youcode.aftas.models.dtos.HuntingDto.HuntingRequestDto;
 import ma.youcode.aftas.models.Entities.Hunting;
 import ma.youcode.aftas.models.Entities.Ranking;
 import ma.youcode.aftas.repositories.CompetitionRepository;

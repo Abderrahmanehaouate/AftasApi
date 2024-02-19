@@ -1,10 +1,10 @@
-package ma.youcode.aftas.models.Dtos.CompetitionDto;
+package ma.youcode.aftas.models.dtos.CompetitionDto;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import ma.youcode.aftas.models.Dtos.RankingDto.RankingDto;
+import ma.youcode.aftas.models.dtos.RankingDto.RankingDto;
 
 import java.time.LocalTime;
 import java.util.ArrayList;

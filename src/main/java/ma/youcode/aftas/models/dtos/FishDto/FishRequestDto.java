@@ -1,11 +1,11 @@
-package ma.youcode.aftas.models.Dtos.FishDto;
+package ma.youcode.aftas.models.dtos.FishDto;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import ma.youcode.aftas.models.Dtos.HuntingDto.HuntingResponseDto;
-import ma.youcode.aftas.models.Dtos.LevelDto.LevelResponseDto;
+import ma.youcode.aftas.models.dtos.HuntingDto.HuntingResponseDto;
+import ma.youcode.aftas.models.dtos.LevelDto.LevelResponseDto;
 
 import java.util.ArrayList;
 import java.util.List;

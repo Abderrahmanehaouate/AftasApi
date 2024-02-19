@@ -1,6 +1,6 @@
 package ma.youcode.aftas.services;
 
-import ma.youcode.aftas.models.Dtos.FishDto.FishRequestDto;
+import ma.youcode.aftas.models.dtos.FishDto.FishRequestDto;
 import ma.youcode.aftas.models.Entities.Fish;
 import ma.youcode.aftas.repositories.FishRepository;
 import org.modelmapper.ModelMapper;

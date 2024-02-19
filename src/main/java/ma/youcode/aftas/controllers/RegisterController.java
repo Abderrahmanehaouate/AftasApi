@@ -1,8 +1,12 @@
 package ma.youcode.aftas.controllers;
 
-import ma.youcode.aftas.models.Dtos.MemberDto.MemberRequestDto;
-import ma.youcode.aftas.models.Dtos.authenticationDto.AuthDto;
+import ma.youcode.aftas.models.dtos.MemberDto.MemberRequestDto;
+import ma.youcode.aftas.models.dtos.adherentDto.AdherentRequestDto;
+import ma.youcode.aftas.models.dtos.authenticationDto.AuthDto;
+import ma.youcode.aftas.models.dtos.juryDto.JuryRequestDto;
+import ma.youcode.aftas.models.dtos.managerDto.ManagerRequestDto;
 import ma.youcode.aftas.security.AuthService;
+import ma.youcode.aftas.services.servicesInterfaces.ManagerServiceInterface;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -23,4 +27,21 @@ public class RegisterController {
     public ResponseEntity<AuthDto> registerMember(@RequestBody MemberRequestDto memberRequestDto){
         return ResponseEntity.ok(authService.registerMember(memberRequestDto));
     }
+
+    @PostMapping("jury")
+    public ResponseEntity<AuthDto> registerJury(@RequestBody JuryRequestDto juryRequestDto){
+        return ResponseEntity.ok(authService.registerJury(juryRequestDto));
+    }
+
+    @PostMapping("adherent")
+    public ResponseEntity<AuthDto> registerAdherent(@RequestBody AdherentRequestDto adherentRequestDto){
+        return ResponseEntity.ok(authService.registerAdherent(adherentRequestDto));
+    }
+
+    @PostMapping("manager")
+    public ResponseEntity<AuthDto> registerManager(@RequestBody ManagerRequestDto managerRequestDto){
+        return ResponseEntity.ok(authService.registerManager(managerRequestDto));
+    }
+
+
 }

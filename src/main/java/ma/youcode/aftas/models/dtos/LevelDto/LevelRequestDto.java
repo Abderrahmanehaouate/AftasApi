@@ -1,7 +1,7 @@
-package ma.youcode.aftas.models.Dtos.LevelDto;
+package ma.youcode.aftas.models.dtos.LevelDto;
 
 import lombok.*;
-import ma.youcode.aftas.models.Dtos.FishDto.FishResponseDto;
+import ma.youcode.aftas.models.dtos.FishDto.FishResponseDto;
 
 import java.util.ArrayList;
 import java.util.List;

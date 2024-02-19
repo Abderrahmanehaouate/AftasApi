@@ -1,8 +1,8 @@
 package ma.youcode.aftas.services;
 
-import ma.youcode.aftas.models.Dtos.CompetitionDto.CompetitionRequestDto;
-import ma.youcode.aftas.models.Dtos.RankingDto.RankingRequestDto;
-import ma.youcode.aftas.models.Dtos.RankingDto.RankingResponseDto;
+import ma.youcode.aftas.models.dtos.CompetitionDto.CompetitionRequestDto;
+import ma.youcode.aftas.models.dtos.RankingDto.RankingRequestDto;
+import ma.youcode.aftas.models.dtos.RankingDto.RankingResponseDto;
 import ma.youcode.aftas.models.Entities.Ranking;
 import ma.youcode.aftas.repositories.RankingRepository;
 import org.modelmapper.ModelMapper;

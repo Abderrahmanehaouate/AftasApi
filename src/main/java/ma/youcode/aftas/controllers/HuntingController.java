@@ -1,6 +1,6 @@
 package ma.youcode.aftas.controllers;
 
-import ma.youcode.aftas.models.Dtos.HuntingDto.HuntingRequestDto;
+import ma.youcode.aftas.models.dtos.HuntingDto.HuntingRequestDto;
 import ma.youcode.aftas.services.HuntingService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;

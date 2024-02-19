@@ -1,4 +1,4 @@
-package ma.youcode.aftas.models.Dtos.FishDto;
+package ma.youcode.aftas.models.dtos.LevelDto;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -9,8 +9,9 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class FishResponseDto {
+public class LevelResponseDto {
     private Long id;
-    private String name;
-    private float averageWeight;
+    private Integer code;
+    private String description;
+    private Integer points;
 }

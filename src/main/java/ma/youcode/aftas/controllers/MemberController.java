@@ -1,6 +1,6 @@
 package ma.youcode.aftas.controllers;
 
-import ma.youcode.aftas.models.Dtos.MemberDto.MemberRequestDto;
+import ma.youcode.aftas.models.dtos.MemberDto.MemberRequestDto;
 import ma.youcode.aftas.services.MemberService;
 import ma.youcode.aftas.services.servicesInterfaces.MemberServiceInterface;
 import org.springframework.beans.factory.annotation.Autowired;

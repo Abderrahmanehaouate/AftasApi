@@ -1,4 +1,4 @@
-package ma.youcode.aftas.models.Dtos.authenticationDto;
+package ma.youcode.aftas.models.dtos.authenticationDto;
 
 import lombok.Data;
 import lombok.NoArgsConstructor;

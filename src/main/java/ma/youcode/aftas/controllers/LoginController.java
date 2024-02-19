@@ -1,7 +1,7 @@
 package ma.youcode.aftas.controllers;
 
-import ma.youcode.aftas.models.Dtos.authenticationDto.AuthDto;
-import ma.youcode.aftas.models.Dtos.authenticationDto.LoginDto;
+import ma.youcode.aftas.models.dtos.authenticationDto.AuthDto;
+import ma.youcode.aftas.models.dtos.authenticationDto.LoginDto;
 import ma.youcode.aftas.security.AuthService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;

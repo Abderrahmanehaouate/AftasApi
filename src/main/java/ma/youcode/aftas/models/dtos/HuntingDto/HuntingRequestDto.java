@@ -1,12 +1,12 @@
-package ma.youcode.aftas.models.Dtos.HuntingDto;
+package ma.youcode.aftas.models.dtos.HuntingDto;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import ma.youcode.aftas.models.Dtos.CompetitionDto.CompetitionResponseDto;
-import ma.youcode.aftas.models.Dtos.FishDto.FishResponseDto;
-import ma.youcode.aftas.models.Dtos.MemberDto.MemberResponseDto;
+import ma.youcode.aftas.models.dtos.CompetitionDto.CompetitionResponseDto;
+import ma.youcode.aftas.models.dtos.FishDto.FishResponseDto;
+import ma.youcode.aftas.models.dtos.MemberDto.MemberResponseDto;
 
 @Getter
 @Setter

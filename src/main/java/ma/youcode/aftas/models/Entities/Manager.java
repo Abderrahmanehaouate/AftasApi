@@ -22,6 +22,8 @@ public class Manager extends User implements UserDetails {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    private String fistName;
+    private String lastName;
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {

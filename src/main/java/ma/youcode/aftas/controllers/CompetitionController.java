@@ -1,6 +1,6 @@
 package ma.youcode.aftas.controllers;
 
-import ma.youcode.aftas.models.Dtos.CompetitionDto.CompetitionRequestDto;
+import ma.youcode.aftas.models.dtos.CompetitionDto.CompetitionRequestDto;
 import ma.youcode.aftas.services.CompetitionService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;

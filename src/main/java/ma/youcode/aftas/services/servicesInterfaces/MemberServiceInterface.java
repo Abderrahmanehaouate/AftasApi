@@ -1,6 +1,6 @@
 package ma.youcode.aftas.services.servicesInterfaces;
 
-import ma.youcode.aftas.models.Dtos.MemberDto.MemberRequestDto;
+import ma.youcode.aftas.models.dtos.MemberDto.MemberRequestDto;
 import org.springframework.stereotype.Service;
 
 import java.util.List;

@@ -1,7 +1,7 @@
 package ma.youcode.aftas.controllers;
 
-import ma.youcode.aftas.models.Dtos.RankingDto.RankingRequestDto;
-import ma.youcode.aftas.models.Dtos.RankingDto.RankingResponseDto;
+import ma.youcode.aftas.models.dtos.RankingDto.RankingRequestDto;
+import ma.youcode.aftas.models.dtos.RankingDto.RankingResponseDto;
 import ma.youcode.aftas.services.RankingService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
