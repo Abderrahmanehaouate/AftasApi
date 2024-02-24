@@ -1,6 +1,6 @@
 package ma.youcode.aftas.Service;
 
-import ma.youcode.aftas.exception.ExceptionCompetition;
+import ma.youcode.aftas.exception.ApiRequestException;
 import ma.youcode.aftas.models.dtos.CompetitionDto.CompetitionRequestDto;
 import ma.youcode.aftas.models.Entities.Competition;
 import ma.youcode.aftas.repositories.CompetitionRepository;
@@ -98,7 +98,7 @@ public class CompetitionServiceTest {
         when(modelMapper.map(competitionDto, Competition.class)).thenReturn(competition);
         when(competitionRepository.existsByCode(anyString())).thenReturn(true);
 
-        assertThrows(ExceptionCompetition.class, () -> competitionService.createCompetition(competitionDto));
+        assertThrows(ApiRequestException.class, () -> competitionService.createCompetition(competitionDto));
         verify(competitionRepository, never()).save(competition);
     }
 

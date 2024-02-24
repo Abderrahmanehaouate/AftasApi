@@ -10,7 +10,6 @@ import ma.youcode.aftas.models.Entities.Manager;
 import ma.youcode.aftas.models.Entities.Member;
 import ma.youcode.aftas.models.dtos.juryDto.JuryRequestDto;
 import ma.youcode.aftas.models.dtos.managerDto.ManagerRequestDto;
-import ma.youcode.aftas.repositories.MemberRepository;
 import ma.youcode.aftas.services.servicesInterfaces.AdherentServiceInterface;
 import ma.youcode.aftas.services.servicesInterfaces.JuryServiceInterface;
 import ma.youcode.aftas.services.servicesInterfaces.ManagerServiceInterface;

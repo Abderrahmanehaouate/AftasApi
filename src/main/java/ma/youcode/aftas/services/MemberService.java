@@ -1,5 +1,6 @@
 package ma.youcode.aftas.services;
 
+import ma.youcode.aftas.exception.ApiRequestException;
 import ma.youcode.aftas.models.dtos.MemberDto.MemberRequestDto;
 import ma.youcode.aftas.models.Entities.Member;
 import ma.youcode.aftas.repositories.MemberRepository;
@@ -46,6 +47,11 @@ public class MemberService implements MemberServiceInterface {
     @Override
     public MemberRequestDto createMember(MemberRequestDto memberDto) {
         Member member = modelMapper.map(memberDto, Member.class);
+
+        if (memberRepository.existsByEmail(member.getEmail())) {
+            throw new ApiRequestException("Email already exists");
+        }
+
         Member savedMember = memberRepository.save(member);
         return modelMapper.map(savedMember, MemberRequestDto.class);
     }

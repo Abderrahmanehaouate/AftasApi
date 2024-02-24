@@ -1,6 +1,6 @@
 package ma.youcode.aftas.services;
 
-import ma.youcode.aftas.exception.ExceptionCompetition;
+import ma.youcode.aftas.exception.ApiRequestException;
 import ma.youcode.aftas.models.dtos.CompetitionDto.CompetitionRequestDto;
 import ma.youcode.aftas.models.Entities.Competition;
 import ma.youcode.aftas.repositories.CompetitionRepository;
@@ -51,11 +51,11 @@ public class CompetitionService {
         competition.setCode(code);
 
         if (competitionRepository.existsByCode(competition.getCode())) {
-            throw new ExceptionCompetition("Competition with code '" + competition.getCode() + "' already exists.");
+            throw new ApiRequestException("Competition with code '" + competition.getCode() + "' already exists.");
         }
 
         if (competitionRepository.existsByDate(competitionDto.getDate())) {
-            throw new ExceptionCompetition("Already exists a competition in the same date");
+            throw new ApiRequestException("Already exists a competition in the same date");
         }
 
         Competition savedCompetition = competitionRepository.save(competition);
