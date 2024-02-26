@@ -1,16 +1,13 @@
 package ma.youcode.aftas.security;
 
-import ma.youcode.aftas.models.Entities.Adherent;
 import ma.youcode.aftas.models.Entities.Jury;
 import ma.youcode.aftas.models.dtos.MemberDto.MemberRequestDto;
-import ma.youcode.aftas.models.dtos.adherentDto.AdherentRequestDto;
 import ma.youcode.aftas.models.dtos.authenticationDto.AuthDto;
 import ma.youcode.aftas.models.dtos.authenticationDto.LoginDto;
 import ma.youcode.aftas.models.Entities.Manager;
 import ma.youcode.aftas.models.Entities.Member;
 import ma.youcode.aftas.models.dtos.juryDto.JuryRequestDto;
 import ma.youcode.aftas.models.dtos.managerDto.ManagerRequestDto;
-import ma.youcode.aftas.services.servicesInterfaces.AdherentServiceInterface;
 import ma.youcode.aftas.services.servicesInterfaces.JuryServiceInterface;
 import ma.youcode.aftas.services.servicesInterfaces.ManagerServiceInterface;
 import ma.youcode.aftas.services.servicesInterfaces.MemberServiceInterface;
@@ -28,17 +25,15 @@ public class AuthService {
     private final MemberServiceInterface memberService;
     private final ManagerServiceInterface managerService;
     private final JuryServiceInterface juryService;
-    private final AdherentServiceInterface adherentService;
     private final ModelMapper modelMapper;
     private final PasswordEncoder passwordEncoder;
     private final JwtService jwtService;
     private final AuthenticationManager authenticationManager;
 
-    public AuthService(MemberServiceInterface memberService, ManagerServiceInterface managerService, JuryServiceInterface juryService, AdherentServiceInterface adherentService, ModelMapper modelMapper, PasswordEncoder passwordEncoder, JwtService jwtService, AuthenticationManager authenticationManager) {
+    public AuthService(MemberServiceInterface memberService, ManagerServiceInterface managerService, JuryServiceInterface juryService, ModelMapper modelMapper, PasswordEncoder passwordEncoder, JwtService jwtService, AuthenticationManager authenticationManager) {
         this.memberService = memberService;
         this.managerService = managerService;
         this.juryService = juryService;
-        this.adherentService = adherentService;
         this.modelMapper = modelMapper;
         this.passwordEncoder = passwordEncoder;
         this.jwtService = jwtService;
@@ -79,7 +74,7 @@ public class AuthService {
         return authDto;
     }
 
-    public AuthDto registerJury(JuryRequestDto registerRequest){
+    public AuthDto registerJury(JuryRequestDto registerRequest) {
 
         Jury jury = modelMapper.map(registerRequest, Jury.class);
         jury.setPassword(passwordEncoder.encode(registerRequest.getPassword()));
@@ -89,23 +84,6 @@ public class AuthService {
         juryService.createJury(juryRequestDto);
 
         String jwtToken = jwtService.generateToken(jury);
-
-        AuthDto authDto = new AuthDto();
-        authDto.setToken(jwtToken);
-
-        return authDto;
-    }
-
-    public AuthDto registerAdherent(AdherentRequestDto registerRequest){
-
-        Adherent adherent = modelMapper.map(registerRequest, Adherent.class);
-        adherent.setPassword(passwordEncoder.encode(registerRequest.getPassword()));
-
-        AdherentRequestDto adherentRequestDto = modelMapper.map(adherent, AdherentRequestDto.class);
-
-        adherentService.createAdherent(adherentRequestDto);
-
-        String jwtToken = jwtService.generateToken(adherent);
 
         AuthDto authDto = new AuthDto();
         authDto.setToken(jwtToken);

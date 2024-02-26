@@ -22,10 +22,12 @@ public class MemberRequestDto {
     private Long id;
     private Integer num;
     private String name;
+    private String email;
     private String password;
     private String familyName;
     private Date accessionDate;
     private String nationality;
+    private Boolean isActivated = false;
     @Enumerated(EnumType.STRING)
     private IdentityDocumentType identityDocumentType;
     private String identityNumber;

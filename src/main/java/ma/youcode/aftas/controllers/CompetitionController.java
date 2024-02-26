@@ -11,9 +11,9 @@ import java.util.List;
 
 @Controller
 @RestController
-@CrossOrigin("*")
 @RequestMapping("/api/v1/competitions")
 public class CompetitionController {
+
     private final CompetitionService competitionService;
 
     @Autowired
@@ -22,34 +22,30 @@ public class CompetitionController {
     }
 
     @GetMapping
-    @PreAuthorize("hasRole('MANAGER')")
-    public List<CompetitionRequestDto> getAllCompetitions(
-            @RequestParam(defaultValue = "0") int page,
-            @RequestParam(defaultValue = "10") int size
-    ) {
+    public List<CompetitionRequestDto> getAllCompetitions(@RequestParam(defaultValue = "0") int page, @RequestParam(defaultValue = "10") int size) {
 
         return competitionService.getAllCompetitions(page, size);
     }
 
     @GetMapping("/{id}")
     public CompetitionRequestDto getCompetitionById(@PathVariable Long id) {
+
         return competitionService.getCompetitionById(id);
     }
 
     @PostMapping("/create")
-    @PreAuthorize("hasRole('MANAGER')")
     public CompetitionRequestDto createCompetition(@RequestBody CompetitionRequestDto competitionDto) {
+
         return competitionService.createCompetition(competitionDto);
     }
 
     @PutMapping("/update")
-    @PreAuthorize("hasRole('MANAGER')")
     public CompetitionRequestDto updateCompetition(@RequestBody CompetitionRequestDto competitionDto) {
+
         return competitionService.updateCompetition(competitionDto);
     }
 
     @DeleteMapping("/{id}")
-    @PreAuthorize("hasRole('MANAGER')")
     public void deleteCompetitionById(@PathVariable Long id) {
         competitionService.deleteById(id);
     }

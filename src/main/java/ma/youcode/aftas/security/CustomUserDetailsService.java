@@ -1,10 +1,8 @@
 package ma.youcode.aftas.security;
 
-import ma.youcode.aftas.models.Entities.Adherent;
 import ma.youcode.aftas.models.Entities.Jury;
 import ma.youcode.aftas.models.Entities.Manager;
 import ma.youcode.aftas.models.Entities.Member;
-import ma.youcode.aftas.repositories.AdherentRepository;
 import ma.youcode.aftas.repositories.JuryRepository;
 import ma.youcode.aftas.repositories.ManagerRepository;
 import ma.youcode.aftas.repositories.MemberRepository;
@@ -23,8 +21,6 @@ public class CustomUserDetailsService implements UserDetailsService {
     private ManagerRepository managerRepository;
     @Autowired
     private JuryRepository juryRepository;
-    @Autowired
-    private AdherentRepository adherentRepository;
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
@@ -45,12 +41,6 @@ public class CustomUserDetailsService implements UserDetailsService {
         if (jury != null){
 
             return jury;
-        }
-
-        Adherent adherent = adherentRepository.findByEmail(username);
-        if (adherent != null) {
-
-            return adherent;
         }
 
         throw new UsernameNotFoundException("User not found with the email " + username);

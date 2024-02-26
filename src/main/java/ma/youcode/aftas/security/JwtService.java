@@ -6,11 +6,9 @@ import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 import io.jsonwebtoken.io.Decoders;
 import io.jsonwebtoken.security.Keys;
-import ma.youcode.aftas.models.Entities.Adherent;
 import ma.youcode.aftas.models.Entities.Jury;
 import ma.youcode.aftas.models.Entities.Manager;
 import ma.youcode.aftas.models.Entities.Member;
-import org.hibernate.engine.spi.Managed;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
 
@@ -33,12 +31,10 @@ public class JwtService {
         Map<String, Object> claims = new HashMap<>();
         if (userDetails instanceof Member) {
             claims.put("role", "MEMBER");
+            claims.put("isActivated", ((Member) userDetails).getIsActivated());
         }
         if (userDetails instanceof Manager){
             claims.put("role", "MANAGER");
-        }
-        if (userDetails instanceof Adherent){
-            claims.put("role", "ADHERENT");
         }
         if (userDetails instanceof Jury){
             claims.put("role", "JURY");

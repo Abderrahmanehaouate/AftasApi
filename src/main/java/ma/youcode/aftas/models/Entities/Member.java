@@ -40,6 +40,7 @@ public class Member extends User implements UserDetails {
     private IdentityDocumentType identityDocumentType;
     @NotNull(message = "Identity number is mandatory")
     private String identityNumber;
+    private Boolean isActivated = false;
 
     @OneToMany(mappedBy = "member", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private List<Ranking> rankings = new ArrayList<Ranking>();

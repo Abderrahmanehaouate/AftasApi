@@ -3,10 +3,11 @@ package ma.youcode.aftas.services;
 import ma.youcode.aftas.exception.ApiRequestException;
 import ma.youcode.aftas.models.dtos.MemberDto.MemberRequestDto;
 import ma.youcode.aftas.models.Entities.Member;
+import ma.youcode.aftas.repositories.JuryRepository;
+import ma.youcode.aftas.repositories.ManagerRepository;
 import ma.youcode.aftas.repositories.MemberRepository;
 import ma.youcode.aftas.services.servicesInterfaces.MemberServiceInterface;
 import org.modelmapper.ModelMapper;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Slice;
 import org.springframework.stereotype.Service;
@@ -18,10 +19,14 @@ import java.util.stream.Collectors;
 public class MemberService implements MemberServiceInterface {
 
     private final MemberRepository memberRepository;
+    private final ManagerRepository managerRepository;
+    private final JuryRepository juryRepository;
     private final ModelMapper modelMapper;
 
-    public MemberService(MemberRepository memberRepository, ModelMapper modelMapper) {
+    public MemberService(MemberRepository memberRepository, ManagerRepository managerRepository, JuryRepository juryRepository, ModelMapper modelMapper) {
         this.memberRepository = memberRepository;
+        this.managerRepository = managerRepository;
+        this.juryRepository = juryRepository;
         this.modelMapper = modelMapper;
     }
 
@@ -48,7 +53,10 @@ public class MemberService implements MemberServiceInterface {
     public MemberRequestDto createMember(MemberRequestDto memberDto) {
         Member member = modelMapper.map(memberDto, Member.class);
 
-        if (memberRepository.existsByEmail(member.getEmail())) {
+        if (memberRepository.existsByEmail(member.getEmail())
+                || managerRepository.existsByEmail(member.getEmail())
+                || juryRepository.existsByEmail(member.getEmail())
+        ) {
             throw new ApiRequestException("Email already exists");
         }
 

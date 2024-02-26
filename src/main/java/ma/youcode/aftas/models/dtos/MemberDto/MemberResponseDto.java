@@ -18,6 +18,8 @@ public class MemberResponseDto {
     private Long id;
     private Integer num;
     private String name;
+    private String email;
+    private Boolean isActivated;
     private String familyName;
     private Date accessionDate;
     private String nationality;
